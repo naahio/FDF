@@ -44,7 +44,7 @@ static char	*ft_read_line(char **result)
 	int		remain_len;
 	char	*ret;
 	char	*tmp;
-	
+
 	if (!*result)
 	{
 		free(*result);
@@ -73,8 +73,11 @@ char	*get_next_line(int fd)
 	int			ret;
 
 	ret = read(fd, buf, 0);
-	if (BUFFER_SIZE <= 0 || fd < 0 || ret < 0)
+	if (BUFFER_SIZE <= 0 || ret < 0)
+	{
+		write (2, "Error! ENCONTRED_PROBLEM_WHILE_READING_FILE\n", 45);
 		return (NULL);
+	}
 	ft_free_line(fd, buf, &result);
 	return (ft_read_line(&result));
 }

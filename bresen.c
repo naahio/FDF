@@ -6,62 +6,71 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:01:36 by mbabela           #+#    #+#             */
-/*   Updated: 2021/11/27 18:30:50 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/01 16:57:48 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	bresen(int x0, int y0, int x1, int y1, t_fdf *data)
+t_param	*init_param(int *x0, int *y0, t_fdf *data)
 {
-	int	dx;
-	int	sx;
-	int	dy;
-	int	sy;
-	int	err;
-	int	e2;
-	int	z;
-	int	z1;
-	
-	z = data->matrice[y0][x0];
-	z1 = data->matrice[y1][x1];
-	x0 *= data->scoop;
-	x1 *= data->scoop;
-	y0 *= data->scoop;
-	y1 *= data->scoop;
-	x0 += data->move_x;
-	x1 += data->move_x;
-	y0 += data->move_y;
-	y1 += data->move_y;
-	// deb
-	isometric(&x0, &y0, z, data);
-	isometric(&x1, &y1, z1, data);
-	dx = abs(x1 - x0);
-	if (x0 < x1)
-		sx = 1;
+	t_param	*param;
+
+	param = (t_param *)malloc(sizeof(t_param));
+	if (!param)
+		return (NULL);
+	if ()
+	param->z = data->matrice[*y0][*x0];
+	param->z1 = data->matrice[data->y1][data->x1];
+	*x0 *= data->scoop;
+	data->x1 *= data->scoop;
+	*y0 *= data->scoop;
+	data->y1 *= data->scoop;
+	*x0 += data->move_x;
+	data->x1 += data->move_x;
+	*y0 += data->move_y;
+	data->y1 += data->move_y;
+	isometric(x0, y0, param->z, data);
+	isometric(&data->x1, &data->y1, param->z1, data);
+	param->dx = abs(data->x1 - *x0);
+	return (param);
+}
+
+int	compare(int a, int b)
+{
+	int	ret;
+
+	if (a < b)
+		ret = 1;
 	else
-		sx = -1;
-	dy = -abs(y1 - y0);
-	if (y0 < y1)
-		sy = 1;
-	else
-		sy = -1;
-	err = dx + dy;
+		ret = -1;
+	return (ret);
+}
+
+void	bresen(int x0, int y0, t_fdf *data)
+{
+	t_param	*param;
+
+	param = init_param(&x0, &y0, data);
+	param->sx = compare(x0, data->x1);
+	param->dy = -abs(data->y1 - y0);
+	param->sy = compare(y0, data->y1);
+	param->err = param->dx + param->dy;
 	while (1)
 	{
-		mlx_pixel_put(data->mlx_ptr,data->win_prt, x0, y0, data->color);
-		if (x0 == x1 && y0 == y1)
+		mlx_pixel_put(data->mlx_ptr, data->win_prt, x0, y0, data->color);
+		if (x0 == data->x1 && y0 == data->y1)
 			break ;
-		e2 = 2 * err;
-		if (e2 >= dy)
+		param->e2 = 2 * param->err;
+		if (param->e2 >= param->dy)
 		{
-			err+= dy;
-			x0 += sx;
+			param->err += param->dy;
+			x0 += param->sx;
 		}	
-		if (e2 <= dx)
+		if (param->e2 <= param->dx)
 		{
-			err += dx;
-			y0 += sy;
+			param->err += param->dx;
+			y0 += param->sy;
 		}
-	}	
+	}
 }

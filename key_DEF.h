@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isometric.c                                        :+:      :+:    :+:   */
+/*   key_DEF.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 10:22:21 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/01 11:26:33 by mbabela          ###   ########.fr       */
+/*   Created: 2021/12/01 11:38:42 by mbabela           #+#    #+#             */
+/*   Updated: 2021/12/01 11:58:00 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef KEY_DEF_H
+# define KEY_DEF_H
 
-void	isometric(int *x, int *y, int z, t_fdf *data)
-{
-	*x = ((*x - *y) * cos(data->rotation));
-	*y = (((*x + *y) * sin(0.8)) - z);
-}
+# define ZOOM_OUT 31
+# define ZOOM_IN 34
+# define  UP 69
+# define DOWN 78
+# define MOVE_LEFT 123
+# define MOVE_RIGHT 124
+# define MOVE_UP 125
+# define MOVE_DOWN 126
+# define EXIT 53
+# define REJECTION 15
+
+#endif
