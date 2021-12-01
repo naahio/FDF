@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:05:54 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/01 15:50:14 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/01 17:45:28 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ void	exit_window(int key, t_fdf **param)
 void	change_view(int key, t_fdf **param)
 {
 	if (key == ZOOM_OUT)
-		(*param)->scoop -= 5;
+		(*param)->scoop -= 2;
 	if (key == ZOOM_IN)
-		(*param)->scoop += 5;
+		(*param)->scoop += 2;
 	if (key == UP)
 	{
-		(*param)->high += 5;
+		(*param)->high += 2;
 		conv_int((*param)->char_matrice, *param);
 	}
 	if (key == DOWN)
 	{
-		(*param)->high -= 5;
+		(*param)->high -= 2;
 		conv_int((*param)->char_matrice, *param);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:02:25 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/01 15:56:46 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/01 17:54:55 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	**get_matrice(int fd)
 {
 	char	*tmp;
 	char	*str;
-	int		i;
 	char	**matrice;
 	char	*fre;
 

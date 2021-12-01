@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:11:35 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/01 15:46:40 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/01 17:54:03 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # include "get_next_line.h"
 # include "libft/libft.h"
-
+# define BUFFER_SIZE 1000
 typedef struct s_fdf
 {
 	void	*mlx_ptr;

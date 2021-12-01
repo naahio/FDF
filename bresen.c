@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:01:36 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/01 16:57:48 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/01 17:41:08 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_param	*init_param(int *x0, int *y0, t_fdf *data)
 	param = (t_param *)malloc(sizeof(t_param));
 	if (!param)
 		return (NULL);
-	if ()
 	param->z = data->matrice[*y0][*x0];
 	param->z1 = data->matrice[data->y1][data->x1];
 	*x0 *= data->scoop;

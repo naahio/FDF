@@ -6,29 +6,41 @@
 #    By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 08:57:50 by mbabela           #+#    #+#              #
-#    Updated: 2021/12/01 09:59:45 by mbabela          ###   ########.fr        #
+#    Updated: 2021/12/01 18:22:53 by mbabela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=fdf
-CC=gcc
-CFLAGS=-Wall -Werror -Wextra
-LIBS=-lmlx -framework OpenGL -framework AppKit
-SRCS = brensen.c draw.c fdf.c isometric.c get_next_line.c get_next_line_utils.c
-OBJS = $(SRCS:.c=.o)
+SRC=	bresen.c get_color.c draw.c fdf.c get_next_line.c get_next_line_utils.c isometric.c matrice.c
 
-all : $(NAME)
+BNS=	$(SRC) key_handel_Bonus
 
-$(NAME) : $(OBJS) 
-	$(CC) -o $(NAME) -I $^ $(CFLAGS) $(LIBS)
+OBJ=$(SRC:.c=.o)
+BOBJ=$(BNS:.c=.o)
+CC=gcc -c
+CFLAGS=-Wall -Wextra -Werror
+REM=rm -f
 
-bonus : $(OBJS)
-	$(CC) -o $(NAME) -I $^ $(CFLAGS) $(LIBS)
+all: $(NAME)
 
-clean :
-	rm -f $(OBJS)
+$(NAME): $(OBJ)
+	# use gcc -c to get objects
+	# link the objects b gcc nit
+	
+bonus: $(BOBJ)
+	$(AR) $(NAME) $(BOBJ)
+	ranlib $(NAME)
 
-fclean : clean
-	rm -f $(NAME)
+%.o: %.c
+	$(CC) $(CFLAGS) $<
 
-re : fclean all
+clean:
+	$(REM) $(OBJ) $(BOBJ)
+		
+fclean: clean
+	$(REM) $(NAME)
+
+re:	fclean all
+
+.PHONY: all clean fclean re bonus
+	
