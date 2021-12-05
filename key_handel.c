@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isometric.c                                        :+:      :+:    :+:   */
+/*   key_handel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 10:22:21 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/05 11:37:43 by mbabela          ###   ########.fr       */
+/*   Created: 2021/12/02 11:58:59 by mbabela           #+#    #+#             */
+/*   Updated: 2021/12/02 12:08:27 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "key_DEF.h"
 
-void	isometric(int *x, int *y, int z, t_fdf *data)
+int	key_handel(int key, t_fdf **param)
 {
-	*x = ((*x - *y) * cos(data->rotation));
-	*y = (((*x + *y) * sin(0.523599)) - z);
+	if (key == EXIT)
+	{
+		mlx_destroy_window((*param)->mlx_ptr, (*param)->win_prt);
+		exit(0);
+	}
+	return (0);
 }
