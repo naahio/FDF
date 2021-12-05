@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 11:58:29 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/05 14:31:08 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/05 17:05:02 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	load_info(t_fdf *data)
 {
 	int	color;
 
-	color = 0xfef311;
+	color = 0x0f8ede;
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 0, color, ZOOM_IN_ACT);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 15, color, ZOOM_OUT_ACT);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 30, color, UP_ACT);
@@ -26,7 +26,8 @@ void	load_info(t_fdf *data)
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 90, color, MOVE_UP_ACT);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 105, color, MOVE_DOWN_ACT);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 120, color, ROTATE_ACT);
-	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 135, color, EXIT_ACT);
+	mlx_string_put (data->mlx_ptr, data->win_prt, WIDTH_F - 150, 0, color, "BY : ");
+	mlx_string_put (data->mlx_ptr, data->win_prt, WIDTH_F - 100, 15, color, LOGIN);
 }
 
 t_fdf	*init_data(int fd)
@@ -45,8 +46,14 @@ t_fdf	*init_data(int fd)
 	conv_int(data->char_matrice, data);
 	data->move_x = WIDTH_F ;
 	data->move_y = HEIGHT_F ;
-	data->scoop = DEF_SCOOP;
+	if (data->w >= 200)
+		data->scoop = 4;
+	else
+		data->scoop = 20;
 	data->rotation = DEF_ROTATION;
+	// data->bpp = 32;
+	// data->size_line = 3200;
+	// data->endian = 1;
 	return (data);
 }
 
@@ -76,7 +83,7 @@ int	main(int argc, char **argv)
 	// data->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH_F, HEIGHT_F);
 	load_info(data);
 	draw(data);
-	// mlx_get_data_addr(data->img_ptr, , HEIGHT_F, )
+	// mlx_get_data_addr(data->img_ptr, &data->bpp, &data->size_line, &data->endian);
 	// mlx_put_image_to_window(data->mlx_ptr, data->win_prt, data->img_ptr, 0, 0);
 	mlx_key_hook(data->win_prt, key_event_bonus, &data);
 	mlx_loop(data->mlx_ptr);

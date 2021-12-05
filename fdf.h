@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:11:35 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/05 13:31:37 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/05 17:04:52 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@
 # define DOWN_ACT "*DOWN        : -"
 # define MOVE_LEFT_ACT "*MOVE_LEFT   : left_arrow"
 # define MOVE_RIGHT_ACT "*MOVE_RIGHT  : right_arrow"
-# define MOVE_UP_ACT "*MOVE_UP      : up_arrow"
+# define MOVE_UP_ACT "*MOVE_UP     : up_arrow"
 # define MOVE_DOWN_ACT "*MOVE_DOWN   : down_arrow"
 # define ROTATE_ACT "*ROTATE      : r"
 # define EXIT_ACT "*EXIT        : esc"
+# define LOGIN "mbabela"
 
 typedef struct s_fdf
 {
@@ -43,7 +44,7 @@ typedef struct s_fdf
 	void	*mlx_ptr;
 	void	*win_prt;
 	int		color;
-	int		scoop;
+	float	scoop;
 	int		**matrice;
 	char	**char_matrice;
 	float	rotation;
@@ -55,6 +56,9 @@ typedef struct s_fdf
 	int		move_y;
 	int		x1;
 	int		y1;
+	int		bpp;
+	int		size_line;
+	int		endian;
 }t_fdf;
 
 typedef struct s_param
