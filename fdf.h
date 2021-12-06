@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:11:35 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/05 17:04:52 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:21:26 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@
 # define ROTATE_ACT "*ROTATE      : r"
 # define EXIT_ACT "*EXIT        : esc"
 # define LOGIN "mbabela"
+# define BY "BY : "
 
 typedef struct s_fdf
 {
 	void	*img_ptr;
 	void	*mlx_ptr;
 	void	*win_prt;
-	int		color;
+	int		**color;
 	float	scoop;
 	int		**matrice;
 	char	**char_matrice;
@@ -59,6 +60,8 @@ typedef struct s_fdf
 	int		bpp;
 	int		size_line;
 	int		endian;
+	int		i;
+	int		j;
 }t_fdf;
 
 typedef struct s_param
@@ -88,4 +91,6 @@ int		ft_atoi(const char *str);
 int		ft_isdigit(int c);
 char	*ft_strchr(const char *s, int c);
 void	load_info(t_fdf *data);
+int		ft_atoi_conv(const char *str);
+
 #endif

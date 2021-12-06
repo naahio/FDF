@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:01:36 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/01 17:41:08 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:26:31 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_param	*init_param(int *x0, int *y0, t_fdf *data)
 	param = (t_param *)malloc(sizeof(t_param));
 	if (!param)
 		return (NULL);
-	param->z = data->matrice[*y0][*x0];
-	param->z1 = data->matrice[data->y1][data->x1];
+	param->z = data->matrice[*y0][*x0] * data->high;
+	param->z1 = data->matrice[data->y1][data->x1] * data->high;
 	*x0 *= data->scoop;
 	data->x1 *= data->scoop;
 	*y0 *= data->scoop;
@@ -57,7 +57,8 @@ void	bresen(int x0, int y0, t_fdf *data)
 	param->err = param->dx + param->dy;
 	while (1)
 	{
-		mlx_pixel_put(data->mlx_ptr, data->win_prt, x0, y0, data->color);
+		mlx_pixel_put(data->mlx_ptr, data->win_prt, x0, y0,
+			data->color[data->i][data->j]);
 		if (x0 == data->x1 && y0 == data->y1)
 			break ;
 		param->e2 = 2 * param->err;

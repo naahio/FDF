@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:02:25 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/01 17:54:55 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/06 17:21:38 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,19 @@ void	conv_int(char **matrice, t_fdf *data)
 
 	count_size(&data);
 	data->matrice = (int **)malloc(sizeof(int *) * data->h);
+	data->color = (int **)malloc(sizeof(int *) * data->h);
 	i = 0;
 	while (i < data->h)
 	{
 		split = ft_split(matrice[i], ' ');
 		data->size = matrice_size(split);
 		data->matrice[i] = (int *)malloc(sizeof(int) * data->size);
+		data->color[i] = (int *)malloc(sizeof(int) * data->size);
 		j = 0;
 		while (j < data->size)
 		{
-			data->matrice[i][j] = ft_atoi(split[j]) * data->high;
-			data->color = get_color(split[j]);
+			data->matrice[i][j] = ft_atoi(split[j]);
+			data->color[i][j] = get_color(split[j]);
 			j++;
 		}
 		free(*split);

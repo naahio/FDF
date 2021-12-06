@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:25:17 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/05 12:16:03 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/06 12:35:27 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,10 @@ void	draw(t_fdf *data)
 	while (y < data->h)
 	{
 		x = 0;
+		data->i = y;
 		while (x < data->size)
 		{
-			if (!data->matrice[y][x])
-				data->color = 0xFFFFFF;
-			else
-				data->color = 0x0226b2;
+			data->j = x;
 			set_draw_x(x, y, data->size, data);
 			set_draw_y(x, y, data->h, data);
 			x++;

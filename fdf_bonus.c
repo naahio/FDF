@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 11:58:29 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/05 17:05:02 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/06 13:28:43 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	load_info(t_fdf *data)
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 90, color, MOVE_UP_ACT);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 105, color, MOVE_DOWN_ACT);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 120, color, ROTATE_ACT);
-	mlx_string_put (data->mlx_ptr, data->win_prt, WIDTH_F - 150, 0, color, "BY : ");
-	mlx_string_put (data->mlx_ptr, data->win_prt, WIDTH_F - 100, 15, color, LOGIN);
+	mlx_string_put (data->mlx_ptr, data->win_prt, 930, 0, color, BY);
+	mlx_string_put (data->mlx_ptr, data->win_prt, 980, 15, color, LOGIN);
 }
 
 t_fdf	*init_data(int fd)
@@ -46,8 +46,10 @@ t_fdf	*init_data(int fd)
 	conv_int(data->char_matrice, data);
 	data->move_x = WIDTH_F ;
 	data->move_y = HEIGHT_F ;
+	if (data->w >= 1000)
+		data->scoop = 1;
 	if (data->w >= 200)
-		data->scoop = 4;
+		data->scoop = 5;
 	else
 		data->scoop = 20;
 	data->rotation = DEF_ROTATION;
@@ -57,16 +59,22 @@ t_fdf	*init_data(int fd)
 	return (data);
 }
 
+int check_error(int argN)
+{
+	if (argN != 2)
+	{
+		write(2, "Erreur! FILE_UNDEFINED !\n", 26);
+		return (0);
+	}
+	return (1);
+}
 int	main(int argc, char **argv)
 {
 	int		fd;
 	t_fdf	*data;
 
-	if (argc != 2)
-	{
-		write(2, "Erreur! FILE_UNDEFINED !\n", 26);
-		return (0);
-	}
+	if (!check_error(argc))
+		return (0);	
 	fd = open (argv[1], O_RDONLY);
 	if (fd < 0 || fd > 4096)
 	{
