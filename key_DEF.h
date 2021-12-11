@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:38:42 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/01 11:58:00 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/08 18:40:18 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define MOVE_UP 125
 # define MOVE_DOWN 126
 # define EXIT 53
-# define REJECTION 15
+# define REJECTION_X 15
+# define REJECTION_Y 7
 
 #endif

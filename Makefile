@@ -6,7 +6,7 @@
 #    By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 08:57:50 by mbabela           #+#    #+#              #
-#    Updated: 2021/12/06 12:32:23 by mbabela          ###   ########.fr        #
+#    Updated: 2021/12/11 09:08:26 by mbabela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ CFLAGS=-Wall -Werror -Wextra
 INCLUDES=.
 LIBS=-lmlx -framework OpenGL -framework AppKit
 SRC= ft_isdigit.c ft_split.c ft_atoi.c ft_atoi_conv.c fdf.c get_next_line.c get_next_line_utils.c isometric.c matrice.c key_handel.c\
-	draw.c bresen.c get_color.c
+	draw.c bresen.c get_color.c put_data.c
 
 BNS= ft_isdigit.c ft_split.c  ft_atoi_conv.c  ft_atoi.c fdf_bonus.c get_next_line.c get_next_line_utils.c isometric.c matrice.c key_handel_Bonus.c\
-	draw.c bresen.c get_color.c
+	draw.c bresen.c get_color.c put_data.c
 
 OBJ=$(SRC:.c=.o)
 BOBJ=$(BNS:.c=.o)

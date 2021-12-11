@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 15:56:11 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/06 17:26:06 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/11 17:56:25 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_atoi_conv(const char *str)
 	{
 		add = check_pos(str[i]);
 		result = result + (add * fk_pow(j));
-		i ++;
+		i++;
 		j--;
 	}
 	return (result);

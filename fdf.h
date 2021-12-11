@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:11:35 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/06 17:21:26 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/11 17:55:22 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,23 @@
 # define HEIGHT_F 768
 # define DEF_ROTATION 0.523599
 # define DEF_SCOOP 10
-# define ZOOM_IN_ACT "*ZOOME IN    : i"
-# define ZOOM_OUT_ACT "*ZOOME OUT   : o"
+# define ZOOM_IN_ACT "*ZOOME IN    : i/scroll up"
+# define ZOOM_OUT_ACT "*ZOOME OUT   : o/scroll down"
 # define UP_ACT "*UP          : +"
 # define DOWN_ACT "*DOWN        : -"
 # define MOVE_LEFT_ACT "*MOVE_LEFT   : left_arrow"
 # define MOVE_RIGHT_ACT "*MOVE_RIGHT  : right_arrow"
 # define MOVE_UP_ACT "*MOVE_UP     : up_arrow"
 # define MOVE_DOWN_ACT "*MOVE_DOWN   : down_arrow"
-# define ROTATE_ACT "*ROTATE      : r"
+# define ROTATE_ACT_X "*ROTATE_X    : r"
+# define ROTATE_ACT_Y "*ROTATE_Y    : x"
+# define D2_VIEW "*2D_VIEW     : t"
+# define D3_VIEW "*3D_VIEW     : d"
 # define EXIT_ACT "*EXIT        : esc"
 # define LOGIN "mbabela"
 # define BY "BY : "
+
+# define WHOAMI	printf("%s\n", __func__);
 
 typedef struct s_fdf
 {
@@ -48,7 +53,8 @@ typedef struct s_fdf
 	float	scoop;
 	int		**matrice;
 	char	**char_matrice;
-	float	rotation;
+	float	rotate_x;
+	float	rotate_y;
 	int		size;
 	int		h;
 	int		w;
@@ -57,11 +63,13 @@ typedef struct s_fdf
 	int		move_y;
 	int		x1;
 	int		y1;
-	int		bpp;
-	int		size_line;
+	char	*buffer;
+	int		pixel_bits;
+	int		line_bytes;
 	int		endian;
 	int		i;
 	int		j;
+	int		view;
 }t_fdf;
 
 typedef struct s_param
@@ -92,5 +100,8 @@ int		ft_isdigit(int c);
 char	*ft_strchr(const char *s, int c);
 void	load_info(t_fdf *data);
 int		ft_atoi_conv(const char *str);
+void	pixel_put(t_fdf *data, int x, int y);
+int		mouse_event(int key, int x, int y, t_fdf *data);
+void	img_clear(t_fdf *data);
 
 #endif

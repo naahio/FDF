@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 10:22:21 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/05 11:37:43 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/08 18:36:42 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	isometric(int *x, int *y, int z, t_fdf *data)
 {
-	*x = ((*x - *y) * cos(data->rotation));
-	*y = (((*x + *y) * sin(0.523599)) - z);
+	int	a;
+
+	a = *x;
+	*x = ((*x - *y) * cos(data->rotate_x));
+	*y = (((a + *y) * sin(data->rotate_y)) - z);
 }

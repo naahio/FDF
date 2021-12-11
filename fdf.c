@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:10:59 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/06 12:54:37 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/11 17:41:02 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	load_info(t_fdf *data)
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 75, color, MOVE_RIGHT_ACT);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 90, color, MOVE_UP_ACT);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 105, color, MOVE_DOWN_ACT);
-	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 120, color, ROTATE_ACT);
+	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 120, color, ROTATE_ACT_X);
+	mlx_string_put (data->mlx_ptr, data->win_prt, 0, 135, color, ROTATE_ACT_Y);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 930, 0, color, BY);
 	mlx_string_put (data->mlx_ptr, data->win_prt, 980, 15, color, LOGIN);
 }
@@ -44,18 +45,17 @@ t_fdf	*init_data(int fd)
 		data->w++;
 	data->high = 1;
 	conv_int(data->char_matrice, data);
-	data->move_x = WIDTH_F ;
-	data->move_y = HEIGHT_F ;
-	if (data->w >= 1000)
+	if (data->w >= 4000)
 		data->scoop = 1;
 	else if (data->w >= 200)
-		data->scoop = 4;
+		data->scoop = 5;
 	else
-		data->scoop = 20;
-	data->rotation = DEF_ROTATION;
-	// data->bpp = 32;
-	// data->size_line = 3200;
-	// data->endian = 1;
+		data->scoop = 10;
+	data->move_x = (WIDTH_F / 2) - (data->size / 2);
+	data->move_y = (HEIGHT_F / 2) - (data->h / 2);
+	data->rotate_x = DEF_ROTATION;
+	data->rotate_y = DEF_ROTATION;
+	data->view = 1;
 	return (data);
 }
 
@@ -82,11 +82,9 @@ int	main(int argc, char **argv)
 		return (0);
 	data->mlx_ptr = mlx_init();
 	data->win_prt = mlx_new_window(data->mlx_ptr, WIDTH_F, HEIGHT_F, "F_D_F");
-	// data->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH_F, HEIGHT_F);
-	load_info(data);
+	data->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH_F, HEIGHT_F);
 	draw(data);
-	// mlx_get_data_addr(data->img_ptr, &data->bpp, &data->size_line, &data->endian);
-	// mlx_put_image_to_window(data->mlx_ptr, data->win_prt, data->img_ptr, 0, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_prt, data->img_ptr, 0, 0);
 	mlx_key_hook(data->win_prt, key_handel, &data);
 	mlx_loop(data->mlx_ptr);
 }
