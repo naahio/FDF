@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:10:59 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/11 18:57:07 by mbabela          ###   ########.fr       */
+/*   Updated: 2022/01/05 13:31:42 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_fdf	*init_data(int fd)
 	if (!data)
 		return (NULL);
 	data->char_matrice = get_matrice(fd);
+	if (!data->char_matrice)
+		exit(0);
 	data->h = matrice_size(data->char_matrice);
 	data->w = 0;
 	while (data->char_matrice[0][data->w])
