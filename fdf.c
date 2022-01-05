@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:10:59 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/11 17:41:02 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/11 18:57:07 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ int	main(int argc, char **argv)
 	data->win_prt = mlx_new_window(data->mlx_ptr, WIDTH_F, HEIGHT_F, "F_D_F");
 	data->img_ptr = mlx_new_image(data->mlx_ptr, WIDTH_F, HEIGHT_F);
 	draw(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_prt, data->img_ptr, 0, 0);
 	mlx_key_hook(data->win_prt, key_handel, &data);
 	mlx_loop(data->mlx_ptr);
 }
-

@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 09:01:16 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/11 17:54:19 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/11 18:42:40 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,26 @@
 
 void	img_clear(t_fdf *data)
 {
-	int		pixel;
+	int	pixel;
 
 	pixel = 0;
-	data->buffer = mlx_get_data_addr(data->img_ptr, 
-					&data->pixel_bits, &data->line_bytes, &data->endian);
+	data->buffer = mlx_get_data_addr(data->img_ptr,
+			&data->pixel_bits, &data->line_bytes, &data->endian);
 	while (pixel < WIDTH_F * data->line_bytes)
 		data->buffer[pixel++] = 0;
 }
 
 void	pixel_put(t_fdf *data, int x, int y)
 {
-	char *dst;
+	char	*dst;
 
 	if ((x >= 0 && x < WIDTH_F) && (y >= 0 && y < HEIGHT_F))
 	{
-		data->buffer = mlx_get_data_addr(data->img_ptr, 
-						&data->pixel_bits, &data->line_bytes, &data->endian);
-  		dst = data->buffer + (y * data->line_bytes + x * (data->pixel_bits / 8));
- 		 *(unsigned int *)dst = data->color[data->i][data->j];
+		data->buffer = mlx_get_data_addr(data->img_ptr,
+				&data->pixel_bits, &data->line_bytes, &data->endian);
+		dst = data->buffer + (y * data->line_bytes
+				+ x * (data->pixel_bits / 8));
+		*(unsigned int *)dst = data->color[data->i][data->j];
 	}
 }
 

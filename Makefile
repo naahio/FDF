@@ -6,7 +6,7 @@
 #    By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 08:57:50 by mbabela           #+#    #+#              #
-#    Updated: 2021/12/11 09:08:26 by mbabela          ###   ########.fr        #
+#    Updated: 2021/12/11 19:04:05 by mbabela          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,5 @@ fclean: clean
 	$(REM) $(NAME)
 
 re:	fclean all
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus re_bonus
 	

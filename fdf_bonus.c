@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 11:58:29 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/11 17:53:14 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/11 18:44:00 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_fdf	*init_data(int fd)
 	return (data);
 }
 
-int check_error(int argN)
+int	check_error(int argN)
 {
 	if (argN != 2)
 	{
@@ -73,7 +73,6 @@ int check_error(int argN)
 
 int	mlx_init_param(t_fdf *data)
 {
-	
 	if (!data)
 		return (0);
 	data->mlx_ptr = mlx_init();
@@ -94,8 +93,8 @@ int	main(int argc, char **argv)
 	t_fdf	*data;
 
 	if (!check_error(argc))
-		return (0);	
-	fd = open (argv[1], O_RDONLY);
+		return (0);
+	fd = open(argv[1], O_RDONLY);
 	if (fd < 0 || fd > 4096)
 	{
 		write(1, argv[1], ft_strlen(argv[1]));

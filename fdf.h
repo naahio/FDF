@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 09:11:35 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/11 17:55:22 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/11 18:57:35 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@
 # define EXIT_ACT "*EXIT        : esc"
 # define LOGIN "mbabela"
 # define BY "BY : "
-
-# define WHOAMI	printf("%s\n", __func__);
 
 typedef struct s_fdf
 {

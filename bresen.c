@@ -6,7 +6,7 @@
 /*   By: mbabela <mbabela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:01:36 by mbabela           #+#    #+#             */
-/*   Updated: 2021/12/11 17:18:46 by mbabela          ###   ########.fr       */
+/*   Updated: 2021/12/11 19:01:06 by mbabela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	compare(int a, int b)
 void	bresen(int x0, int y0, t_fdf *data)
 {
 	t_param	*param;
-	
+
 	param = init_param(&x0, &y0, data);
 	param->sx = compare(x0, data->x1);
 	param->dy = -abs(data->y1 - y0);
